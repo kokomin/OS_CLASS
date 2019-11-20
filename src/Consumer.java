@@ -5,7 +5,8 @@
  */
 
 public class Consumer implements Runnable {
-    private int currentTrack;
+    private int preTrack;
+
 
     public Consumer(Buffer b) {
         buffer = b;
@@ -17,34 +18,30 @@ public class Consumer implements Runnable {
         while (true) {
 
             diskAccess = (DiskAccess) buffer.remove();
-            SleepUtilities.nap((int)(((Math.abs(diskAccess.track - currentTrack) * 0.7) + 0.43) + 11.3));
-            currentTrack = diskAccess.track;
+//            SleepUtilities.nap((int)(((Math.abs(diskAccess.track - currentTrack) * 0.7) + 0.43) + 11.3));
+            //SleepUtilities.nap((int)(((Math.abs(preTrack - diskAccess.track ) * 0.7) + 0.43)));
+            diskAccess.seekTime = (Math.abs(preTrack - diskAccess.track ) * 0.07) + 0.43;
+            preTrack = diskAccess.track;
 
-            diskAccess.processingTimeStartTime = System.currentTimeMillis();               // record start time
-            SleepUtilities.nap((int)diskAccess.processingTimeFix);                            // do the task for n duration
-            diskAccess.processingTimeEndTime = System.currentTimeMillis();                 // record end time
-            diskAccess.processingTime = diskAccess.processingTimeEndTime - diskAccess.processingTimeStartTime;   // calculate the time that it exactly running
+            //diskAccess.processingTimeStartTime = System.currentTimeMillis();               // record start time
+            SleepUtilities.nap(diskAccess.processingTimeFix);                            // do the task for n(29.3) duration
 
-
-            diskAccess.completeTime = System.currentTimeMillis();                               // set the completion because ALL tasks are done at this point
-            diskAccess.turnAroundTime = diskAccess.completeTime - diskAccess.createTime;
-
-//            DiskAccessStatistic.mTotalTime = DiskAccessStatistic.mTotalTime + diskAccess.turnAroundTime;
-            diskAccess.waitTime = diskAccess.turnAroundTime - diskAccess.processingTime; // when program just wait without doing anything
+            long completeTime = System.currentTimeMillis();                              // record when all task is done
+            diskAccess.endTime = completeTime + diskAccess.processingTimeFix;
 
 
+//            diskAccess.waitTime = diskAccess.processingTime - diskAccess.createTime - diskAccess.processingTimeFix; // when program just wait without doing anything
+            diskAccess.waitTime = (diskAccess.endTime - diskAccess.createTime) - diskAccess.processingTimeFix;
 
-            DiskAccessStatistic.addProcessingTime(diskAccess.processingTime);
+
+
+            diskAccess.turnAroundTime = diskAccess.endTime - diskAccess.createTime;
             DiskAccessStatistic.addTurnaroundTime(diskAccess.turnAroundTime);
-            DiskAccessStatistic.addWaitTimeTotal(diskAccess.waitTime);
 
             DiskAccessStatistic.count = DiskAccessStatistic.count + 1;
-//            DiskAccessStatistic.evalThroughPut(diskAccess.createTime, diskAccess.completeTime);
-//            DiskAccessStatistic.evalCPU_usage();
-
-
-//            System.out.println("avg service time " + diskAccess.processingTime);
-//            DiskAccessStatistic.displaySta();
+            DiskAccessStatistic.addEndTime(diskAccess.endTime);
+            DiskAccessStatistic.addWaitTime(diskAccess.waitTime);
+            DiskAccessStatistic.addProcessingTime(diskAccess.processingTimeFix);
 
 
 
@@ -52,14 +49,22 @@ public class Consumer implements Runnable {
 
 
 
-//            System.out.println("Consumer napping");
-//            SleepUtilities.nap();
+//            diskAccess.processingTime = diskAccess.processingEndTime + diskAccess.processingTimeFix;   // calculate the time that it exactly running
+//            //diskAccess.processingTime = diskAccess.processingTimeEndTime + diskAccess.processingTimeFix;   // calculate the time that it exactly running
+//            DiskAccessStatistic.addProcessingTime(diskAccess.processingTime);
 //
-//            // consume an item from the buffer
-//            System.out.println("Consumer wants to consume.");
 //
-//            message = (Date) buffer.remove();
-//            System.out.println("Consumer received message:" + message);
+//            //diskAccess.completeTime = System.currentTimeMillis();                               // set the completion because ALL tasks are done at this point
+//            diskAccess.turnAroundTime = diskAccess.processingTime - diskAccess.createTime;
+//
+
+
+
+//            DiskAccessStatistic.addProcessingTime(diskAccess.processingTime);
+//            DiskAccessStatistic.addTurnaroundTime(diskAccess.turnAroundTime);
+//            DiskAccessStatistic.addWaitTimeTotal(diskAccess.waitTime);
+
+
         }
     }
     private Buffer buffer;
