@@ -11,7 +11,7 @@ public class Factory {
     public static void main(String args[]) {
         Buffer server = new BoundedBuffer();
 
-        int sleepTime = 10;
+        int sleepTime = 60;
 
         // now create the producer and consumer threads
         Thread producerThread = new Thread(new Producer(server));

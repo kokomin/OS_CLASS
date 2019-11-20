@@ -6,12 +6,6 @@ public class DiskAccessStatistic {
 
 
     public static int count;
-
-//    public static double throughPut; // end service time - start consumer time.
-//    public static double cpu_usage;
-
-    // Program start / end time
-    //public static double mTotalTime;
     public static long startProgramTime;
     public static long endProgramTime;
 
@@ -110,11 +104,11 @@ public class DiskAccessStatistic {
 
         System.out.println("end time " + endProgramTime);
         System.out.println("start time " + startProgramTime);
-//
+
         System.out.println("processor utilization: " + doCPU_usage() + "%");
-//
+
         System.out.println("total DAs processed: " + count);
-//
+
         System.out.println("Throughput: " + doThroughPut());
 
 
