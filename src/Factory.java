@@ -11,7 +11,7 @@ public class Factory {
     public static void main(String args[]) {
         Buffer server = new BoundedBuffer();
 
-        int sleepTime = 60;
+        int sleepTime = 1;
 
         // now create the producer and consumer threads
         Thread producerThread = new Thread(new Producer(server));
@@ -36,6 +36,8 @@ public class Factory {
 
         producerThread.stop();
         consumerThread0.stop();
+
+
 
 
         DiskAccessStatistic.displaySta();

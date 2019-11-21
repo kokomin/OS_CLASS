@@ -110,6 +110,7 @@ public class DiskAccessStatistic {
         System.out.println("total DAs processed: " + count);
 
         System.out.println("Throughput: " + doThroughPut());
+        System.out.println("---------------------------");
 
 
     }
