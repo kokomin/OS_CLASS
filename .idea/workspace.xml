@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d5f675b-3de9-4235-823b-a6fab3b5ee20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homwork2_final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BoundedBuffer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/BoundedBuffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/Buffer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/Consumer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/DiskAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/DiskAccessStatistic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/Factory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/Producer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homwork2_final/SleepUtilities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoundedBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoundedBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiskAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiskAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DiskAccessStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiskAccessStatistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Producer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +131,7 @@
       <workItem from="1574289414829" duration="46000" />
       <workItem from="1574289803142" duration="22000" />
       <workItem from="1574291912075" duration="260000" />
-      <workItem from="1574292374881" duration="4679000" />
+      <workItem from="1574292374881" duration="5951000" />
     </task>
     <servers />
   </component>

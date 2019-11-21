@@ -21,9 +21,9 @@ public class Consumer implements Runnable {
             diskAccess.seekTime = (Math.abs(preTrack - diskAccess.track ) * 0.07) + 0.43;
             preTrack = diskAccess.track;
 
-            SleepUtilities.nap(diskAccess.processingTimeFix);                            // do the task for n(29.3) duration
+            SleepUtilities.nap(diskAccess.processingTimeFix);                               // Do the task for n(29.3) duration
 
-            long completeTime = System.currentTimeMillis();                              // record when all task is done
+            long completeTime = System.currentTimeMillis();                                 // Record when all task is done
             diskAccess.endTime = completeTime + diskAccess.processingTimeFix;
 
 
@@ -32,18 +32,12 @@ public class Consumer implements Runnable {
             diskAccess.turnAroundTime = diskAccess.endTime - diskAccess.createTime;
             DiskAccessStatistic.addTurnaroundTime(diskAccess.turnAroundTime);
 
-            DiskAccessStatistic.count = DiskAccessStatistic.count + 1;                  // update amount of time disk get access
+            DiskAccessStatistic.count = DiskAccessStatistic.count + 1;                      // Update amount of time disk get access
             DiskAccessStatistic.addEndTime(diskAccess.endTime);
             DiskAccessStatistic.addWaitTime(diskAccess.waitTime);
             DiskAccessStatistic.addProcessingTime(diskAccess.processingTimeFix);
 
             System.out.println("Processed P: " + diskAccess.track + " " + (long)diskAccess.endTime);
-
-
-
-            // print
-//            DiskAccessStatistic.endProgramTime = System.currentTimeMillis();
-//            DiskAccessStatistic.displaySta();
         }
     }
     private Buffer buffer;

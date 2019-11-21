@@ -44,12 +44,6 @@ public class BoundedBuffer implements Buffer {
         buffer[in] = item;
         in = (in + 1) % BUFFER_SIZE;
 
-//        if (count == BUFFER_SIZE) {
-//            System.out.println("Producer Entered " + item + " Buffer FULL");
-//        } else {
-//            System.out.println("Producer Entered " + item + " Buffer Size = " + count);
-//        }
-
         mutex.release();
         full.release();
     }
@@ -66,12 +60,6 @@ public class BoundedBuffer implements Buffer {
         --count;
         Object item = buffer[out];
         out = (out + 1) % BUFFER_SIZE;
-
-//        if (count == 0) {
-//            System.out.println("Consumer Consumed " + item + " Buffer EMPTY");
-//        } else {
-//            System.out.println("Consumer Consumed " + item + " Buffer Size = " + count);
-//        }
 
         mutex.release();
         empty.release();

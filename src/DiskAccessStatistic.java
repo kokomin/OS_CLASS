@@ -4,20 +4,15 @@ public class DiskAccessStatistic {
     public static double maxTurnAroundTime= 0;
     public static double maxEndTime;
 
-
     public static int count;
     public static long startProgramTime;
     public static long endProgramTime;
-
 
     // total time
     public static double processingTimeTotal;
     public static double turnaroundTimeTotal;
     public static double waitTimeTotal;
     public static double endTimeTotal;
-
-
-
 
     public static double doAvgProcessingTime() {
         if (count >= 1) {
@@ -43,10 +38,6 @@ public class DiskAccessStatistic {
         }
     }
 
-
-
-
-
     public static void addProcessingTime(double time){
         processingTimeTotal = processingTimeTotal + time;
         if (time > maxProcessingTime) {
@@ -60,7 +51,6 @@ public class DiskAccessStatistic {
             maxTurnAroundTime = time;
         }
     }
-
 
     public static void addWaitTime(double time){
         waitTimeTotal = waitTimeTotal + time;
@@ -86,7 +76,6 @@ public class DiskAccessStatistic {
         double totalProgramRunTime = endProgramTime - startProgramTime;
         return (processingTimeTotal / totalProgramRunTime) * 100;
     }
-
 
     public static void displaySta() {
         System.out.println("\n\n");
