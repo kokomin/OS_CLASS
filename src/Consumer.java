@@ -37,9 +37,13 @@ public class Consumer implements Runnable {
             DiskAccessStatistic.addWaitTime(diskAccess.waitTime);
             DiskAccessStatistic.addProcessingTime(diskAccess.processingTimeFix);
 
+            System.out.println("Processed P: " + diskAccess.track + " " + (long)diskAccess.endTime);
+
+
 
             // print
-            //DiskAccessStatistic.displaySta();
+//            DiskAccessStatistic.endProgramTime = System.currentTimeMillis();
+//            DiskAccessStatistic.displaySta();
         }
     }
     private Buffer buffer;

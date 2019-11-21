@@ -89,6 +89,7 @@ public class DiskAccessStatistic {
 
 
     public static void displaySta() {
+        System.out.println("\n\n");
         System.out.println("average service time: " + doAvgProcessingTime() + " milliseconds");
 
         System.out.println("max service time: " + maxProcessingTime + " milliseconds");
@@ -105,7 +106,7 @@ public class DiskAccessStatistic {
         System.out.println("end time " + endProgramTime);
         System.out.println("start time " + startProgramTime);
 
-        System.out.println("processor utilization: " + doCPU_usage() + "%");
+        System.out.println("processor utilization: " + doCPU_usage() + " %");
 
         System.out.println("total DAs processed: " + count);
 

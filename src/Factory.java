@@ -38,8 +38,6 @@ public class Factory {
         consumerThread0.stop();
 
 
-
-
         DiskAccessStatistic.displaySta();
     }
 }

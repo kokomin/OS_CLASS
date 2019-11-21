@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/homwork2_final.iml" filepath="$PROJECT_DIR$/homwork2_final.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BoundedBuffer.iml" filepath="$PROJECT_DIR$/BoundedBuffer.iml" />
     </modules>
   </component>
 </project>

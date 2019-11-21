@@ -23,6 +23,7 @@ public class Producer implements Runnable {
 
             //2) queue (or transmit) the disk access request to the file server
             buffer.insert(diskAccess);
+            System.out.println("Created P: " + diskAccess.track + " " + diskAccess.createTime);
 
             // 3) sleep for an interarrival time N
             SleepUtilities.nap(intervalArrivalTime);
