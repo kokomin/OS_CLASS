@@ -6,12 +6,12 @@
 import java.util.*;
 
 public class Producer implements Runnable {
-    public static final int intervalArrivalTime = 60;
-    public static double serviceTime = 29.3;
+    public static final int intervalArrivalTime = 50;           // sleep time
+    public static double serviceTime = 40;                      // processing time
 
     public Producer(Buffer b) {
         buffer = b;
-        DiskAccessStatistic.startProgramTime = System.currentTimeMillis();
+        DiskAccessStatistic.startProgramTime = System.currentTimeMillis(); // program start time
     }
 
     public void run() {

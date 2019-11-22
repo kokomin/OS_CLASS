@@ -1,19 +1,27 @@
 public class DiskAccessStatistic {
+
+    // max time of all variable
     public static double maxWaitTime = 0;
     public static double maxProcessingTime = 0;
     public static double maxTurnAroundTime= 0;
     public static double maxEndTime;
 
+    // tracker information
     public static int count;
     public static long startProgramTime;
     public static long endProgramTime;
 
-    // total time
+    // disk run time
     public static double processingTimeTotal;
     public static double turnaroundTimeTotal;
     public static double waitTimeTotal;
     public static double endTimeTotal;
 
+    /**
+     * doAvgProcessingTime():
+     * updated processing time
+     * @return average processing time
+     */
     public static double doAvgProcessingTime() {
         if (count >= 1) {
             return processingTimeTotal / count;
@@ -22,6 +30,11 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * doAvgTurnAroundTime()
+     * calculate average turn around time
+     * @return average turn around
+     */
     public static double doAvgTurnAroundTime() {
         if (count >= 1) {
             return turnaroundTimeTotal / count;
@@ -30,6 +43,11 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * doAvgWaitTime():
+     * calculate average wait time
+     * @return average wait time
+     */
     public static double doAvgWaitTime() {
         if (count >= 1) {
             return waitTimeTotal / count;
@@ -38,6 +56,12 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * addProcessingTime():
+     * add service time into total service time
+     * and update max service time
+     * @param time
+     */
     public static void addProcessingTime(double time){
         processingTimeTotal = processingTimeTotal + time;
         if (time > maxProcessingTime) {
@@ -45,6 +69,11 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * addTurnaroundTime():
+     * add turnaround time into total turnaround time
+     * @param time
+     */
     public static void addTurnaroundTime(double time){
         turnaroundTimeTotal = turnaroundTimeTotal + time;
         if (time > maxTurnAroundTime) {
@@ -52,6 +81,11 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * addWaitTime():
+     * add wait time into total wait time
+     * @param time
+     */
     public static void addWaitTime(double time){
         waitTimeTotal = waitTimeTotal + time;
         if (time > maxWaitTime) {
@@ -59,6 +93,11 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * addEndTime():
+     * add end time into total end time
+     * @param time
+     */
     public static void addEndTime(double time) {
         endTimeTotal = endTimeTotal + time;
         if (time > maxEndTime) {
@@ -66,39 +105,41 @@ public class DiskAccessStatistic {
         }
     }
 
+    /**
+     * doThroughPut():
+     * calculate through put
+     * @return amount of through put
+     */
     public static double doThroughPut() {
         double totalProgramRunTime = endProgramTime - startProgramTime;
-        return (count / totalProgramRunTime) * 1000.0;
+        return (count / totalProgramRunTime) * 100000.0;
 
     }
 
+    /**
+     * doCPU_usage():
+     * update cpu usage time
+     * @return percentage of cpu usage
+     */
     public static double doCPU_usage() {
         double totalProgramRunTime = endProgramTime - startProgramTime;
         return (processingTimeTotal / totalProgramRunTime) * 100;
     }
 
+    /**
+     * print all static info
+     */
     public static void displaySta() {
         System.out.println("\n\n");
-        System.out.println("average service time: " + doAvgProcessingTime() + " milliseconds");
-
-        System.out.println("max service time: " + maxProcessingTime + " milliseconds");
-
-        System.out.println("average turn around time " + doAvgTurnAroundTime() + " milliseconds");
-
-        System.out.println("max turn around time " + maxTurnAroundTime + " milliseconds");
-
-        System.out.println("average wait time " + doAvgWaitTime() + " milliseconds");
-
-        System.out.println("max wait time " + maxWaitTime + " milliseconds");
-
-
+        System.out.println("average service time: " + doAvgProcessingTime() /100 + " milliseconds");
+        System.out.println("max service time: " + maxProcessingTime /100 + " milliseconds");
+        System.out.println("average turn around time " + doAvgTurnAroundTime()/100 + " milliseconds");
+        System.out.println("max turn around time " + maxTurnAroundTime/100 + " milliseconds");
+        System.out.println("average wait time " + doAvgWaitTime()/10000 + " milliseconds");
+        System.out.println("max wait time " + maxWaitTime/10000 + " milliseconds");
         System.out.println("end time " + endProgramTime);
         System.out.println("start time " + startProgramTime);
-
         System.out.println("processor utilization: " + doCPU_usage() + " %");
-
-        System.out.println("total DAs processed: " + count);
-
         System.out.println("Throughput: " + doThroughPut());
         System.out.println("---------------------------");
 
